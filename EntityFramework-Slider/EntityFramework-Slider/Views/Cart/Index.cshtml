@@ -1,0 +1,48 @@
+﻿@model List<BasketVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Price</th>
+                <th scope="col">Count</th>
+                <th scope="col">TotalPrice</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td><img style="width:100px;height:100px" src="~/img/@product.Image"></td>
+                    <td>@product.Price</td>
+                    <td>@product.Count</td>
+                    <td>@product.TotalPrice</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @{
+
+        int grandprice = 0;
+
+        foreach (var item in Model)
+        {
+            
+
+             grandprice += item.TotalPrice;
+
+          
+        }
+
+        <h1> GrandTotalPrice :  @grandprice</h1>
+
+
+
+    }
+</div>
+
